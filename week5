@@ -1,0 +1,381 @@
+Robert  is having 2 strings consist of uppercase & lowercase english letters. Now he want to compare those two strings lexicographically. The letters' case does not matter, that is an uppercase letter is considered equivalent to the corresponding lowercase letter.
+
+
+Input
+The first line contains T. Then T test cases follow.
+
+Each test case contains a two lines contains a string. The strings' lengths range from 1 to 100 inclusive. It is guaranteed that the strings are of the same length and also consist of uppercase and lowercase Latin letters.
+
+Output
+If the first string is less than the second one, print "-1".
+If the second string is less than the first one, print "1".
+If the strings are equal, print "0".
+Note that the letters' case is not taken into consideration when the strings are compared.
+
+Constraints
+                      1≤T≤50
+                      String length≤100
+
+For example:
+
+Input	Result
+3
+aaaa
+aaaA
+abs
+Abz
+abcdefg
+AbCdEfF
+0
+-1
+1
+Answer:#string compare
+t=int(input())
+l=[]
+for i in range(0,t):
+    s1=input()
+    s2=input()
+    if(s1.lower()>s2.lower()):
+        print('1')
+    elif(s2.lower()>s1.lower()):
+        print('-1')
+    else:
+        print('0')
+      
+
+
+Question 2
+
+Find if a String2 is substring of String1. If it is, return the index of the first occurrence. else return -1.
+
+Sample Input 1 
+
+thistest123string
+
+123
+
+Sample Output 1 
+
+8
+
+Answer:#string occurence
+s=input()
+s1=input()
+print(s.find(s1))
+
+Question 3
+
+String should contain only the words are not palindrome.
+
+ 
+
+Sample Input 1
+
+ 
+
+Malayalam is my mother tongue
+
+ 
+
+Sample Output 1
+
+ 
+
+is my mother tongue
+
+Answer:s1=input()
+lower_word=s1.lower()
+words=lower_word.split()
+non_palindrome_words = []
+for word in words:
+    if word != word[::-1]:
+        non_palindrome_words.append(word)
+for i in non_palindrome_words:
+    print(i,end=" ")
+
+Question 4
+
+In this exercise, you will create a program that reads words from the user until the user enters a blank line. After the user enters a blank line your program should display each word entered by the user exactly once. The words should be displayed in the same order that they were first entered. For example, if the user enters:
+
+first
+
+second
+
+first
+
+third
+
+second
+
+then your program should display:
+
+first
+
+second
+
+third
+
+
+Answer:#balance
+s1=input()
+s2=input()
+if s1 in s2:
+    print("True")
+else:
+    print("False")
+
+
+
+
+Question 5
+
+Write a program to check if two strings are balanced. For example, strings s1 and s2 are balanced if all the characters in the s1 are present in s2. The character’s position doesn’t matter. If balanced display as "true" ,otherwise "false".
+
+
+For example:
+
+Input	Result
+Yn
+PYnative
+True
+Answer:#word length
+c=input()
+s=c.split('@')
+a=s[0]
+ind=s[1].find(".")
+com=s[1].split('.')
+for i in range(ind+1,len(s[1])):
+    print(s[1][i],end="")
+print("\n",com[0],sep="")
+print(a)
+
+
+
+
+
+Question 6:
+Given a string S which is of the format USERNAME@DOMAIN.EXTENSION, the program must print the EXTENSION, DOMAIN, USERNAME in the reverse order.
+
+Input Format:
+
+The first line contains S.
+
+Output Format:
+
+The first line contains EXTENSION.
+The second line contains DOMAIN.
+The third line contains USERNAME.
+
+Boundary Condition:
+
+1 <= Length of S <= 100
+
+Example Input/Output 1:
+
+Input:
+
+abcd@gmail.com
+
+Output:
+
+com
+gmail
+abcd
+
+ 
+
+
+ 
+
+
+For example:
+
+Input	Result
+arvijayakumar@rajalakshmi.edu.in
+edu.in
+rajalakshmi
+arvijayakumar
+Answer:#in place
+s=input()
+n=len(s)
+#sl=''
+for i in range(0,n):
+    if s[i].isalpha()==True:
+        c=''
+        for j in range(i+1,n):
+            #print(s[j])
+            if s[j].isdigit()==True:
+                c=c+s[j]
+            if s[j].isalpha()==True:
+                break
+        #print(c)
+        s=s+s[i]*int(c)
+print(s[n:])
+
+Question 7
+
+Assume that the given string has enough memory.
+
+ 
+
+Don't use any extra space(IN-PLACE)
+
+ 
+
+Sample Input 1
+
+ 
+
+a2b4c6
+
+ 
+
+Sample Output 1
+
+ 
+
+aabbbbcccccc
+
+Answer:#in place
+s=input()
+n=len(s)
+#sl=''
+for i in range(0,n):
+    if s[i].isalpha()==True:
+        c=''
+        for j in range(i+1,n):
+            #print(s[j])
+            if s[j].isdigit()==True:
+                c=c+s[j]
+            if s[j].isalpha()==True:
+                break
+        #print(c)
+        s=s+s[i]*int(c)
+print(s[n:])
+Question 8
+
+Reverse a string without affecting special characters
+ Given a string S, containing special characters and all the alphabets, reverse the string without affecting the positions of the special characters.
+Input:
+A&B
+Output:
+B&A
+Explanation: As we ignore '&' and
+As we ignore '&' and then reverse, so answer is "B&A".
+
+
+For example:
+
+Input	Result
+A&x#
+x&A#
+Answer:s=input()
+s_list = list(s)
+left = 0
+right = len(s) - 1
+while left < right:
+    if not s_list[left].isalpha():
+        left += 1
+    elif not s_list[right].isalpha():
+        right -= 1
+    else:
+        s_list[left], s_list[right] = s_list[right], s_list[left]
+        left += 1
+        right -= 1
+result = ''.join(s_list)
+print(result)
+Marks for this submission: 1.00/1.00.
+Question 9
+
+Given two Strings s1 and s2, remove all the characters from s1 which is present in s2.
+
+ 
+
+Constraints
+
+ 
+
+1<= string length <= 200
+
+ 
+
+Sample Input 1
+
+ 
+
+experience
+
+enc
+
+ 
+
+Sample Output 1
+
+ 
+
+xpri
+
+Answer:s1=input()
+s2=input()
+s2_set = set(s2)
+result = ""
+for char in s1:
+    if char not in s2_set:
+        result +=char
+print(result)
+Question 10
+
+Given a string S, which contains several words, print the count C of the words whose length is atleast L. (You can include punctuation marks like comma, full stop also as part of the word length. Space alone must be ignored)
+
+Input Format:
+
+The first line contains S.
+The second line contains L.
+
+ 
+
+Output Format:
+
+The first line contains C
+
+Boundary Conditions:
+
+2 <= Length of S <= 1000
+
+Example Input/Output 1:
+
+Input:
+
+During and after Kenyattas inauguration police elsewhere in the capital, Nairobi, tried to stop the opposition from holding peaceful demonstrations.
+5
+
+Output:
+
+13
+
+Explanation:
+
+The words of minimum length 5 are
+During
+after
+Kenyattas
+inauguration
+police
+elsewhere
+capital,
+Nairobi,
+tried
+opposition
+holding
+peaceful
+demonstrations.
+
+
+Answer:s1=input()
+count=0
+s2=int(input())
+token=s1.split()
+for i in token:
+    if(len(i)>=s2):
+        count+=1
+print(count)
