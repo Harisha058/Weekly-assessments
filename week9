@@ -1,0 +1,264 @@
+A number is considered to be ugly if its only prime factors are 2, 3 or 5.
+
+[1, 2, 3, 4, 5, 6, 8, 9, 10, 12, 15, …] is the sequence of ugly numbers.
+
+Task:
+
+complete the function which takes a number n as input and checks if it's an ugly number.
+
+return ugly if it is ugly, else return not ugly
+
+Hint:
+
+An ugly number U can be expressed as: U = 2^a * 3^b * 5^c, where a, b and c are nonnegative integers.
+
+For example:
+
+Test	Result
+print(checkUgly(6))
+ugly 
+print(checkUgly(21))
+not ugly 
+Answer:def checkUgly(n):
+    if n<=0:
+        return "not ugly"
+    if n in [1,2,3,5]:
+        return "ugly"
+        
+    for i in [2,3,5]:
+        if n%i==0:
+            
+            return checkUgly(n//i)
+    return "not ugly"
+    
+   
+    
+    
+question 2:
+
+Given a number with maximum of 100 digits as input, find the difference between the sum
+
+of odd and even position digits.
+
+Input Format:
+
+Take a number in the form of String from stdin.
+
+Output Format:
+
+Print the difference between sum of even and odd digits
+
+Example input:
+
+1453
+
+Output:
+
+1
+
+Explanation:
+
+Here, sum of even digits is 4 + 3 = 7
+
+sum of odd digits is 1 + 5 = 6.
+
+Difference is 1.
+
+Note that we are always taking absolute difference
+
+Answer:def differenceSum(n):
+    e=0
+    o=0
+    s=str(n)
+    for i in range(0,len(s)):
+        if i%2==0:
+            o=o+int(s[i])
+        else:
+            e=e+int(s[i])
+    return (abs(e-o))
+        
+        
+    
+    
+Question 3
+
+An abundant number is a number for which the sum of its proper divisors is greater than
+
+the number itself. Proper divisors of the number are those that are strictly lesser than the number.
+
+Input Format:
+
+Take input an integer from stdin
+
+Output Format:
+
+Return Yes if given number is Abundant. Otherwise, print No
+
+Example input:
+
+12
+
+Output:
+
+Yes
+
+Explanation
+
+The proper divisors of 12 are: 1, 2, 3, 4, 6, whose sum is 1 + 2 + 3 + 4 + 6 = 16. Since sum of
+
+proper divisors is greater than the given number, 12 is an abundant number.
+
+Example input:
+
+13
+
+Output:
+
+No
+
+Explanation
+
+The proper divisors of 13 is: 1, whose sum is 1. Since sum of proper divisors is not greater
+
+than the given number, 13 is not an abundant number.
+
+
+
+For example:
+
+Test	Result
+print(abundant(12))
+Yes
+print(abundant(13))
+No
+Answer:def abundant(n):
+    s=0
+    for i in range(1,n):
+        if n%i==0:
+            s=s+i
+    if s>n:
+        return "Yes"
+    return "No"
+    
+    
+    
+
+
+
+Question 4
+
+
+Write a code to check whether product of digits at even places is divisible by sum of digits
+
+at odd place of a positive integer.
+
+Input Format:
+
+Take an input integer from stdin.
+
+Output Format:
+
+Print TRUE or FALSE.
+
+Example Input:
+
+1256
+
+Output:
+
+TRUE
+
+Example Input:
+
+1595
+
+Output:
+
+FALSE
+
+For example:
+
+Test	Result
+print(productDigits(1256))
+True
+print(productDigits(1595))
+False
+Answer:def productDigits(n):
+    a=n
+    temp=[]
+    list1=[]
+    list2=[]
+    rem=0
+    while a!=0:
+        rem=a%10
+        temp.append(rem)
+        a=a//10
+    for i in range(len(temp)):
+        if (i+1)%2==0:
+            list1.append(temp[i])
+        else:
+            list2.append(temp[i])
+    pro=1
+    sum=0
+    for i in list1:
+        sum+=i
+    for i in list2:
+        pro*=i
+    if pro%sum==0:
+        return True
+    else:
+        return False
+    
+
+    
+
+
+Question 5
+
+complete function to implement coin change making problem i.e. finding the minimum
+
+number of coins of certain denominations that add up to given amount of money.
+
+The only available coins are of values 1, 2, 3, 4
+
+Input Format:
+
+Integer input from stdin.
+
+Output Format:
+
+return the minimum number of coins required to meet the given target.
+
+Example Input:
+
+16
+
+Output:
+
+4
+
+Explanation:
+
+We need only 4 coins of value 4 each
+
+Example Input:
+
+25
+
+Output:
+
+7
+
+Explanation:
+
+We need 6 coins of 4 value, and 1 coin of 1 value
+
+Answer:
+def coinChange(n):
+    if n==1 or n==2 or n==3 or n==4:
+        return 1
+    if n==0:
+        return 0
+    return n//4 + coinChange(n%4)
+    
+    
