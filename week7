@@ -1,0 +1,248 @@
+Given a tuple and a positive integer k, the task is to find the count of distinct pairs in the tuple whose sum is equal to K.
+
+Examples:
+
+Input: t = (5, 6, 5, 7, 7, 8 ), K = 13 
+Output: 2 
+Explanation: 
+Pairs with sum K( = 13) are  {(5, 8), (6, 7), (6, 7)}. 
+Therefore, distinct pairs with sum K( = 13) are { (5, 8), (6, 7) }. 
+Therefore, the required output is 2.
+
+
+
+For example:
+
+Input	Result
+1,2,1,2,5
+3
+1
+1,2
+0
+0
+Answer:def count_distinct_pairs(t, K):
+    pair_set = set()
+    seen = set()
+    count = 0
+    
+    for num in t:
+        complement = K - num
+        if complement in seen and (complement, num) not in pair_set and (num, complement) not in pair_set:
+            pair_set.add((complement, num))
+            count += 1
+        seen.add(num)
+    
+    return count
+
+t = tuple(int(x) for x in input().split(','))
+K = int(input())
+
+print(count_distinct_pairs(t, K))
+
+Question 2
+
+Write a program to eliminate the common elements in the given 2 arrays and print only the non-repeating
+
+elements and the total number of such non-repeating elements.
+
+Input Format:
+
+The first line contains space-separated values, denoting the size of the two arrays in integer format respectively.
+
+The next two lines contain the space-separated integer arrays to be compared.
+
+Sample Input:
+
+5 4
+
+1 2 8 6 5
+
+2 6 8 10
+
+Sample Output:
+
+1 5 10
+
+3
+
+Sample  Input: 
+
+5 5
+
+1 2 3 4 5
+
+1 2 3 4 5
+
+Sample Output:
+
+NO SUCH ELEMENTS
+
+
+
+For example:
+
+Input	Result
+5 4
+1 2 8 6 5
+2 6 8 10
+1 5 10
+3
+Answer:
+n, m = input().split()
+n = int(n)
+m = int(m)
+arr1 = [int(x) for x in input().split()]
+arr2 = [int(x) for x in input().split()]
+
+non_repeating_elements = set(arr1).symmetric_difference(set(arr2))
+
+if non_repeating_elements:
+    print(*non_repeating_elements)
+    print(len(non_repeating_elements))
+else:
+    print("NO SUCH ELEMENTS")
+
+Question 3
+
+Given an array of strings words, return the words that can be typed using letters of the alphabet on only one row of American keyboard like the image below.
+
+In the American keyboard:
+
+the first row consists of the characters "qwertyuiop",
+the second row consists of the characters "asdfghjkl", and
+the third row consists of the characters "zxcvbnm".
+
+ 
+
+Example 1:
+
+Input: words = ["Hello","Alaska","Dad","Peace"]
+Output: ["Alaska","Dad"]
+Example 2:
+
+Input: words = ["omk"]
+Output: []
+Example 3:
+
+Input: words = ["adsdf","sfd"]
+Output: ["adsdf","sfd"]
+
+
+For example:
+
+Input	Result
+4
+Hello
+Alaska
+Dad
+Peace
+Alaska
+Dad
+2
+adsfd
+afd
+adsfd
+afd
+Answer:n=int(input())
+L=[]
+while(n):
+    L.append(input())
+    n-=1
+K=["qwertyuiop","asdfghjkl","zxcvbnm"]
+Y={}
+for i in K:
+    Y[i]=[]
+for k in K:
+    for l in L:
+        if(set(k).union(set(l.lower()))==set(k)): #if the word can be typed using 1 row of keyboard then the union of the word and the row of keyboard is the row of keyboard
+            Y[k].append(l)
+        else:
+            continue
+flag=True
+for m in Y:
+    if(Y[m]==[]):
+        continue
+    else:
+        flag=False
+        break
+if(not(flag)):
+    for x in Y:
+        for s in Y[x]:
+            print(s)
+else:
+    print("No words")
+
+Question 4
+
+Examples:  
+
+Input: str = "01010101010"
+
+Output: Yes
+
+
+
+Input: str = "REC101"
+
+Output: No
+
+
+For example:
+
+Input	Result
+01010101010
+Yes
+010101 10101
+No
+Answer:a=input()
+b=set(a)
+c={'0','1'}
+if c==b or b=={'0'} or b=={'1'}:
+    print("Yes")
+else:
+    print("No")
+
+
+Question 5
+
+Given a string text of words separated by a single space (no leading or trailing spaces) and a string brokenLetters of all distinct letter keys that are broken, return the number of words in text you can fully type using this keyboard.
+
+Example 1:
+
+Input: text = "hello world", brokenLetters = "ad"
+
+Output: 
+
+1
+
+Explanation: We cannot type "world" because the 'd' key is broken.
+
+
+
+For example:
+
+Input	Result
+hello world
+ad
+1
+Faculty Upskilling in Python Programming
+ak
+2
+Answer:a=input()
+a=a.split(" ")
+
+
+b=input()
+count=0
+
+
+for i in range(len(a)):
+ if a[i].find(b):
+  count+=1
+if count>len(b):
+ print(len(b))
+else:
+ print(count-1)
+
+    
+
